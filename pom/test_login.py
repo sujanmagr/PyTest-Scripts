@@ -9,6 +9,7 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')
 import pytest
 from pom.page.login_page import loginpage
 from pom.page.yourself_page import yourself
+from pom.page.contact_page import contact
 
 @pytest.fixture()
 def driver():
@@ -49,3 +50,20 @@ def test_yourself(driver):
 
     yourself_page.enter_hobby("software testing and api testing")
     time.sleep(1)
+
+#contact page
+def test_contact(driver):
+    contact_page=contact(driver)
+    contact_page.open_page("https://sagar-test-qa.vercel.app/contact.html")
+    driver.maximize_window()
+    time.sleep(2)
+
+    contact_page.enter_name("sujan budhathoki")
+    time.sleep(1)
+
+    contact_page.enter_email("abcd@gmail.com")
+    time.sleep(1)
+
+    contact_page.enter_message("its a good page")
+    time.sleep(1)
+
